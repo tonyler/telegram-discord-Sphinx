@@ -1,0 +1,124 @@
+╔════════════════════════════════════════════════════════════════╗
+║              PRODUCTION DEPLOYMENT CHECKLIST                   ║
+╚════════════════════════════════════════════════════════════════╝
+
+📋 BEFORE YOU START
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✓ Have a domain name purchased
+  ✓ Domain DNS points to your server IP
+  ✓ Server has Ubuntu/Debian Linux
+  ✓ Ports 80 and 443 are open
+
+
+🔧 STEP 1: Configure Your Domain
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Edit config.json:
+  
+  nano config.json
+  
+  Replace YOUR_DOMAIN_HERE with your actual domain:
+  
+  Before:  "BASE_URL": "https://YOUR_DOMAIN_HERE.com"
+  After:   "BASE_URL": "https://binding.example.com"
+  
+  (Do this for both BASE_URL and DISCORD_REDIRECT_URI)
+
+
+🚀 STEP 2: Deploy with HTTPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  sudo bash setup_https.sh
+  
+  Enter your domain and email when prompted
+  This will:
+    ✓ Install Nginx
+    ✓ Get FREE SSL certificate
+    ✓ Configure HTTPS
+    ✓ Setup auto-start
+
+
+⚙️  STEP 3: Switch to Production Config
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  python3 switch_config.py production
+  
+  This updates your .env with production URLs
+  Review changes and confirm
+
+
+🔄 STEP 4: Restart Your App
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  sudo systemctl restart binding
+  
+  Check status:
+  sudo systemctl status binding
+
+
+📱 STEP 5: Update External Services
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  A. Discord Developer Portal
+     1. Go to: https://discord.com/developers/applications
+     2. Select your application
+     3. OAuth2 → Redirects
+     4. Add: https://yourdomain.com/auth/discord/callback
+  
+  B. Telegram Webhook
+     source venv/bin/activate
+     python3 setup_telegram_webhook.py
+
+
+✅ STEP 6: Test Everything
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Visit: https://yourdomain.com
+  
+  Test:
+    ✓ HTTPS is working (🔒 in browser)
+    ✓ Discord login works
+    ✓ Telegram login works
+    ✓ Dashboard displays correctly
+
+
+📊 STEP 7: Monitor (Optional)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  View live logs:
+  sudo journalctl -u binding -f
+  
+  Check SSL certificate:
+  sudo certbot certificates
+
+
+═══════════════════════════════════════════════════════════════════
+
+📝 WHAT CHANGES BETWEEN DEV AND PRODUCTION
+
+  Development                    Production
+  ─────────────────────────────────────────────────────────────────
+  http://localhost:8000      →   https://yourdomain.com
+  ENVIRONMENT=development    →   ENVIRONMENT=production
+  HTTP redirects             →   HTTPS redirects
+  
+  Everything else stays the same!
+  (Your API keys, bot tokens, etc don't change)
+
+═══════════════════════════════════════════════════════════════════
+
+🔙 TO SWITCH BACK TO DEVELOPMENT
+
+  python3 switch_config.py development
+  ./start_dev.sh
+
+═══════════════════════════════════════════════════════════════════
+
+📚 DOCUMENTATION
+
+  CONFIG_GUIDE.md         - Detailed config management guide
+  DEPLOYMENT.md           - Full deployment documentation
+  QUICKSTART.txt          - Quick reference commands
+
+═══════════════════════════════════════════════════════════════════

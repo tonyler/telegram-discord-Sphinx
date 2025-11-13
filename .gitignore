@@ -1,0 +1,33 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+.env
+.venv
+*.db
+*.sqlite
+*.sqlite3
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.coverage
+htmlcov/
+data/
+*.csv.backup
+
+# Google Cloud Service Account credentials
+*-[a-f0-9]*.json
+!config.json
+
+# ngrok binary (download separately from https://ngrok.com/download)
+ngrok

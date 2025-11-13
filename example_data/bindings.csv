@@ -1,0 +1,5 @@
+id,user_id,platform,platform_user_id,platform_username,access_token,refresh_token,created_at,updated_at
+1,1,discord,123456789012345678,johndoe,ya29.a0AfB_example_token,,2025-01-15T10:30:00.123456,2025-01-15T10:30:00.123456
+2,1,telegram,987654321,johndoe_tg,,,2025-01-15T10:35:00.234567,2025-01-15T10:35:00.234567
+3,2,discord,234567890123456789,janedoe,ya29.a0AfB_another_token,,2025-01-15T11:00:00.789012,2025-01-15T11:00:00.789012
+4,2,twitter,3456789012,janedoe_x,access_token_example,refresh_token_example,2025-01-15T11:05:00.345678,2025-01-15T11:05:00.345678

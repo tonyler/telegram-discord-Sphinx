@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0A0F14 url('/static/background.webp') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.container {
+    background: transparent;
+    max-width: 700px;
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+header .subtitle {
+    font-size: 24px;
+    font-weight: 500;
+    color: #e2e8f0;
+}
+
+main {
+    padding: 40px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.social-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.description {
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.7;
+    color: #e2e8f0;
+    margin-bottom: 32px;
+    padding: 0 10px;
+    font-weight: 500;
+}
+
+.no-break {
+    white-space: nowrap;
+}
+
+.message {
+    padding: 16px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.message.success {
+    background: rgba(34, 197, 94, 0.1);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.message.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.platforms-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.platform-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+    padding: 28px 36px;
+    border: none;
+    border-radius: 16px;
+    font-size: 22px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    background: linear-gradient(to bottom left, #70C9FF 0%, #00DCF5 50%, #59EDED 100%);
+    color: #0A0F14;
+    font-family: 'Manrope', sans-serif;
+    user-select: none;
+}
+
+.platform-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(89, 237, 237, 0.4);
+}
+
+.platform-button-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.platform-button-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0A0F14;
+}
+
+.platform-button-status {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(10, 15, 20, 0.7);
+}
+
+.icon {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+    flex-shrink: 0;
+}
+
+.discord-icon {
+    color: #5865F2;
+}
+
+.telegram-icon {
+    color: #229ED9;
+}
+
+#telegramBtn {
+    position: relative;
+}
+
+#telegramWidgetWrapper iframe {
+    border-radius: 8px;
+}
+
+/* Home/Login page */
+.auth-section h2 {
+    font-size: 26px;
+    margin-bottom: 24px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.oauth-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 20px 32px;
+    border: none;
+    border-radius: 14px;
+    font-size: 22px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.oauth-button .icon {
+    width: 28px;
+    height: 28px;
+}
+
+.oauth-button.discord {
+    background: linear-gradient(to bottom left, #70C9FF 0%, #00DCF5 50%, #59EDED 100%);
+    color: #0A0F14;
+}
+
+.oauth-button.discord:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(89, 237, 237, 0.4);
+}
+
+@media (max-width: 640px) {
+    .container {
+        max-width: 100%;
+    }
+
+    main {
+        padding: 24px;
+    }
+
+    .description {
+        font-size: 17px;
+        margin-bottom: 24px;
+    }
+
+    .platform-button {
+        padding: 24px 28px;
+    }
+
+    .platform-button-name {
+        font-size: 20px;
+    }
+
+    .platform-button-status {
+        font-size: 15px;
+    }
+
+    .icon {
+        width: 28px !important;
+        height: 28px !important;
+        min-width: 28px;
+        min-height: 28px;
+        max-width: 28px;
+        max-height: 28px;
+    }
+}

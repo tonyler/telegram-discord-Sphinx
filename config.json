@@ -1,0 +1,33 @@
+{
+  "development": {
+    "ENVIRONMENT": "development",
+    "BASE_URL": "http://localhost:8000",
+    "DISCORD_REDIRECT_URI": "http://localhost:8000/auth/discord/callback",
+    "description": "Local development configuration"
+  },
+  "production": {
+    "ENVIRONMENT": "production",
+    "BASE_URL": "https://YOUR_DOMAIN_HERE.com",
+    "DISCORD_REDIRECT_URI": "https://YOUR_DOMAIN_HERE.com/auth/discord/callback",
+    "description": "Production configuration - UPDATE YOUR_DOMAIN_HERE with your actual domain"
+  },
+  "current": "development",
+  "_instructions": {
+    "1": "Update 'YOUR_DOMAIN_HERE' in production config with your actual domain",
+    "2": "Run: python3 switch_config.py production",
+    "3": "Or manually change 'current' to 'production' and run: python3 apply_config.py",
+    "4": "After changing config, restart your app: sudo systemctl restart binding"
+  },
+  "_urls_to_update": {
+    "Discord Developer Portal": {
+      "url": "https://discord.com/developers/applications/1436622811438252032/oauth2",
+      "action": "Add redirect URI",
+      "value_from_config": "DISCORD_REDIRECT_URI"
+    },
+    "Telegram Bot": {
+      "action": "Run after deployment",
+      "command": "python3 setup_telegram_webhook.py",
+      "note": "This will automatically use BASE_URL from config"
+    }
+  }
+}
